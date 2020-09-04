@@ -135,6 +135,7 @@ class Block
 
   def add (other)
     # Implement.
+    union(other)
   end
   
   # Return the result of subtracting the other Block (or Blocks) from self.
