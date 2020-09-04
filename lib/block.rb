@@ -135,7 +135,16 @@ class Block
 
   def add (other)
     # Implement.
-    union(other)
+    if overlaps?(other)
+      res = [union(other)]
+    else
+      if (self <=> other) == 1
+        res = [other, self]
+      elsif (self <=> other) == -1
+        res = [self, other]
+      end
+    end
+    res
   end
   
   # Return the result of subtracting the other Block (or Blocks) from self.
