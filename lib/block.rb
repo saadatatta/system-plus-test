@@ -151,6 +151,10 @@ class Block
 
   def subtract (other)
     # Implement.
+    if other.is_a?(Array)
+      res = []
+
+    end
     if surrounds?(other)
       res = split(other)
     elsif covers?(other) && (self <=> other) == 1 # Top is same
