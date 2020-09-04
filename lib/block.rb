@@ -153,7 +153,15 @@ class Block
     # Implement.
     if other.is_a?(Array)
       res = []
-
+      other.each_with_index do |element, index|
+        next if index == (other.size - 1)
+        if overlaps?(element)
+          if !element.overlaps?(other[index + 1])
+            res << Block.new(element.bottom, other[index + 1].top)
+          end
+        end
+      end
+      return res
     end
     if surrounds?(other)
       res = split(other)
