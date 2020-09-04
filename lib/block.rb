@@ -151,6 +151,18 @@ class Block
 
   def subtract (other)
     # Implement.
+    if surrounds?(other)
+      res = split(other)
+    elsif covers?(other) && (self <=> other) == 1 # Top is same
+      res = [trim_from(other.bottom)]
+    elsif covers?(other) && (self <=> other) == -1 # Bottom is same
+      res = [trim_to(other.top)]
+    elsif self.bottom <= other.top || self.top >= other.end # Do not overlap case
+      res = [self ]
+    else
+      res = []
+    end
+    res
   end
 
   alias :- :subtract
