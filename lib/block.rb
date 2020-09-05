@@ -195,5 +195,6 @@ class Block
 
   def merge (others)
     # Implement.
+    Block.merge([self,others].flatten)
   end
 end
