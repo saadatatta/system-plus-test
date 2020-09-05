@@ -138,9 +138,9 @@ class Block
     if overlaps?(other)
       res = [union(other)]
     else
-      if (self <=> other) == 1
+      if (self <=> other) == 1 # This block is on right side of other
         res = [other, self]
-      elsif (self <=> other) == -1
+      elsif (self <=> other) == -1 # This block is on left side of other
         res = [self, other]
       end
     end
